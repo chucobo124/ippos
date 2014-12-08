@@ -1,0 +1,42 @@
+<div class="content inline">
+  <div class="top"></div>
+  <div class="contnet_sidebar inline">
+    <div class="sheet_detail">
+      <label>sales NO:</label><span>C00000001</span>
+    </div> 
+    <div class="sheet_ability">
+      <label>交易類型</label>
+      <input type="button" value="現金">
+      <input type="button" value="信用卡">
+    </div> 
+  </div>
+  <div class="content_main inline">
+    <div class="pos_list">
+      <table>
+        <tr>
+          <th>項目</th>
+          <th>產品編號</th>
+          <th>產品名稱</th>
+          <th>序號</th>
+          <th>折扣</th>
+          <th>數量</th>
+          <th>單價</th>
+          <th>金額</th>
+        </tr>
+        <%= render 'search_product'%>
+      </table>  
+    </div>
+    <div class="ability">
+      <div class="enter_product">      
+        <%= form_for @product, :url => {:controller => 'sales_systems' , :action => 'search_product'} do |product|%>
+          <%= product.label  :產品編號%>
+          <%= product.text_field :no%> 
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sidebar inline">
+  <div class="staff_list">
+  </div>
+</div>

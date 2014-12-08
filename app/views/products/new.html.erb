@@ -1,0 +1,36 @@
+<%= form_for @product , :url => {:controller => 'products' , :action => 'create'} do |product|%>
+  <div class= "field">
+    <%= product.label :產品編號 %>
+    <%= product.text_field :no %>
+  </div>
+  <div class= "field">
+    <%= product.label :產品名稱 %>
+    <%= product.text_field :name %>
+  </div>
+  <div class= "field">
+    <%= product.label :數量 %>
+    <%= product.text_field :quantity %>
+  </div>
+  <div class= "field">  
+    <%= product.label :單價 %>
+    <%= product.text_field :price %>
+  </div>
+  <div class= "field">
+    <%= product.label :經銷商價格 %>
+    <%= product.text_field :agent_price %>
+  </div>
+  <div class= "field">
+    <%= product.submit%>
+  </div>
+
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%end%>
