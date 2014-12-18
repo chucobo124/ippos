@@ -23,14 +23,16 @@
           <th>單價</th>
           <th>金額</th>
         </tr>
-        <%= render 'search_product'%>
+        <tr>
+        </tr>
       </table>  
     </div>
     <div class="ability">
       <div class="enter_product">      
-        <%= form_for @product, :url => {:controller => 'sales_systems' , :action => 'search_product'} do |product|%>
+        <%= form_for @product , :url => {:controller => 'sales_systems' , :action => 'index' } , :remote => "true"  do |product|%>
           <%= product.label  :產品編號%>
-          <%= product.text_field :no%> 
+          <%= product.text_field :no%>
+          <%= product.submit %>
         <%end%>
       </div>
     </div>

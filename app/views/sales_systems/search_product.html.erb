@@ -23,26 +23,17 @@
           <th>單價</th>
           <th>金額</th>
         </tr>
-          <%= @search.each do |p| %>
-            <%= p.no%>
-          <%end%>
-          <th>1</th>
-          <th><%= @search.no%></th>
-          <th><%= @search.name%></th>
-          <th><%= @search.no%></th>
-          <th>100</th>
-          <th><%= @search.quantity%></th>
-          <th><%= @search.price%></th>
-          <th>200</th> 
-        
+
       </table>  
     </div>
     <div class="ability">
       <div class="enter_product">      
-        <%= form_for @product, :url => {:controller => 'sales_systems' , :action => 'search_product'} do |product|%>
-          <%= product.label  :產品編號%>
-          <%= product.text_field :no%> 
+        <%= form_for @product , :url => {:controller => 'sales_systems' , :action => 'search_product'} do |product|%>
+          <%= product.label  :產品編號 %>
+          <%= product.text_field :no %>
         <%end%>
+        <%= @list_show %>
+       <input class="list" type="hidden" name="list" value="<%= cookies[:list]%>">
       </div>
     </div>
   </div>

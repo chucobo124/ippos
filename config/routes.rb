@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   get 'products/index'
   get 'products/new'
-  post 'products/create'
+  post 'sales_systems/add_cart'
   get 'sales_systems/index'
+  get 'sales_systems/cart_list'
+  post 'sales_systems/index'
   post 'sales_systems/search_product'
 
   # The priority is based upon order of creation: first created -> highest priority.

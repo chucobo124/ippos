@@ -15,15 +15,4 @@
 //= require turbolinks
 //= require_tree .
 
-$(function () {
-$(".insert_no").keypress(function (event) {
-  if (event.keyCode == 13) {
-    $(".search").trigger("click");
-  }
-});
-$(".search").click(function () {
-    alert('我執行到這行了!');
-    $(".insert_no").val("");
-  });
 
-});
