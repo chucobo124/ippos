@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'sales_systems/cart_list'
   post 'sales_systems/index'
   post 'sales_systems/search_product'
+  post 'sales_systems/save_cart_as_cash'
+  get 'sales_systems/del_cart'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

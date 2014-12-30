@@ -1,13 +1,15 @@
+<!<%= request.format%> -> 
 <div class="content inline">
   <div class="top"></div>
   <div class="contnet_sidebar inline">
-    <div class="sheet_detail">
-      <label>sales NO:</label><span>C00000001</span>
-    </div> 
+    <div class = "sn">
+      <label>訂單編號</label>
+      <%= @sn%>
+    </div>
     <div class="sheet_ability">
       <label>交易類型</label>
-      <input type="button" value="現金">
-      <input type="button" value="信用卡">
+      <%= button_to "現金" ,:action => "save_cart_as_cash" ,:method =>"post" ,:sn => @sn%>
+      <%= button_to "信用卡"%>
     </div> 
   </div>
   <div class="content_main inline">
@@ -22,17 +24,33 @@
           <th>數量</th>
           <th>單價</th>
           <th>金額</th>
+          <th>其他</th>
         </tr>
-        <tr>
-        </tr>
+        <%unless @product_list == nil%>
+          <% @product_list.each do |product|%>
+            <tr>
+              <th><%= @count = @count +1%></th>
+              <th><%= product.no%></th>
+              <th><%= product.name%></th>
+              <th><%= @sn%></th>
+              <th>discount</th>
+              <th><%= @user_cart.count(product.no)%></th>
+              <th><%= product.price%></th>
+              <th><%= (product.price)*(@user_cart.count(product.no)) %></th>
+              <th><%= link_to 'Delete' , {:controller => "sales_systems", :action => "del_cart", :product_no => product.no } %></th>
+            </tr>
+          <% end %>
+        <%end%>
       </table>  
     </div>
     <div class="ability">
       <div class="enter_product">      
-        <%= form_for @product , :url => {:controller => 'sales_systems' , :action => 'index' } , :remote => "true"  do |product|%>
-          <%= product.label  :產品編號%>
-          <%= product.text_field :no%>
-          <%= product.submit %>
+        <%= form_for @product , :url => {:controller => 'sales_systems' , :action => 'add_cart' } do |product|%>
+          <%= product.label  :產品編號%></br>
+          <%= product.text_field :no%></br>
+          <%= product.label :產品數量%></br>
+          <%= text_field_tag :amount , "1"%></br>
+          <%= product.submit %></br>
         <%end%>
       </div>
     </div>
