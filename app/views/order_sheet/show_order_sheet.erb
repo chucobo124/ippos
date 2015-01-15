@@ -1,0 +1,18 @@
+<table>
+<tr>
+  <td>訂單編號</td>
+  <td>產品編號</td>
+  <td>購買數量</td>
+  <td>價格</td>
+  <td>開單日期</td>
+</tr>
+<% @order_sheets.each do |sheet|%>
+  <tr>
+    <td><%= sheet.no %></td>
+    <td><%= sheet.product_no %></td>
+    <td><%= sheet.amount %></td>
+    <td><%= sheet.price %></td>
+    <td><%= sheet.created_at %></td>
+  </tr>
+<% end%>
+</table>

@@ -1,4 +1,4 @@
-<%= form_for @product , :url => {:controller => 'products' , :action => 'create'} do |product|%>
+<%= form_for @product , :url => {:controller => 'products' , :action => 'create' , method: "post" } do |product|%>
   <div class= "field">
     <%= product.label :產品編號 %>
     <%= product.text_field :no %>

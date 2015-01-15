@@ -38,6 +38,7 @@
               <th><%= product.price%></th>
               <th><%= (product.price)*(@user_cart.count(product.no)) %></th>
               <th><%= link_to 'Delete' , {:controller => "sales_systems", :action => "del_cart", :product_no => product.no } %></th>
+              <%@total += (product.price)*(@user_cart.count(product.no))%>
             </tr>
           <% end %>
         <%end%>
@@ -52,6 +53,9 @@
           <%= text_field_tag :amount , "1"%></br>
           <%= product.submit %></br>
         <%end%>
+      </div>
+      <div>
+        <h1>總金額：<%= @total%></h1>
       </div>
     </div>
   </div>

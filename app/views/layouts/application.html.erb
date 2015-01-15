@@ -7,7 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="logo">
+  <%= image_tag("icon.png") %>
+</div>
+<ul class= "menus">
+  <li><%= link_to '產品列表' , products_index_path%></li>
+  <li><%= link_to 'POS系統' , sales_systems_index_path%></li>
+  <li><%= link_to '訂單查詢' , order_sheet_index_path%></li>
+</ul>
 <%= yield %>
 
 </body>

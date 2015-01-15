@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <td>產品編號</td>
+    <td>記帳日期</td>
+    <td>總金額</td>
+    <td>售出商品數</td>
+  </tr>
+  <%@order_sheet_number.each do |order_sheet|%>
+    <tr>
+      <td><%=link_to order_sheet.no, order_sheet_show_order_sheet_path(:no => order_sheet.no) %></td>
+      <td><%=@order_sheets.where(:no=>order_sheet.no)[0].created_at%></td>
+      <td><%=(@order_sheets.where(:no=>order_sheet.no)[0].price)*(@order_sheets.where(:no=>order_sheet.no).count) %></td>
+      <td><%=@order_sheets.where(:no=>order_sheet.no).count %></td>
+    </tr>
+  <%end%>
+</table>

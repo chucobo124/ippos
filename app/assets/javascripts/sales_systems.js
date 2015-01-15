@@ -1,4 +1,4 @@
-function keyFunction() {
+/*function keyFunction() {
   if (event.keyCode==27) {
     alert("Esc 的內建功能已被取消！");
     return false;
@@ -17,4 +17,4 @@ function keyFunction() {
     alert(method);
   }
 }
-document.onkeydown = keyFunction;
+document.onkeydown = keyFunction;*/

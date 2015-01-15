@@ -8,6 +8,7 @@ class SalesSystemsController < ApplicationController
      product = params[:product][:no]
      amount = params[:amount] 
      @count = 0
+     @total = 0
      if Product.where(:no => product).count > 0
        value = $redis.hget( 'CART'  , @sn)
        value = value ? Marshal.load(value) : []
@@ -24,6 +25,8 @@ class SalesSystemsController < ApplicationController
        # else 
        # 2
        # end 
+     else
+
      end
     render :index 
   end

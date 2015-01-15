@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  get 'order_sheet/index'
+
   get 'products/index'
   get 'products/new'
+  post 'products/create'
   post 'sales_systems/add_cart'
   get 'sales_systems/index'
   get 'sales_systems/cart_list'
@@ -8,7 +11,9 @@ Rails.application.routes.draw do
   post 'sales_systems/search_product'
   post 'sales_systems/save_cart_as_cash'
   get 'sales_systems/del_cart'
-
+  get 'order_sheet/index'
+  get 'order_sheet/show_order_sheet'
+  get 'homes/index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

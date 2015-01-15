@@ -1,0 +1,25 @@
+<div>
+<ul>
+  <li><%=link_to "新增產品", products_new_path%></li>
+</ul>
+<table>
+<tr>
+  <td>產品編號</td>
+  <td>產品名稱</td>
+  <td>產品數量</td>
+  <td>產品價格</td>
+  <td>外賣價格</td>
+  <td>更新時間</td>
+</tr>
+<%@products.each do |product| %>
+  <tr>
+  <td><%= product.no %></td>
+  <td><%= product.name %></td>
+  <td><%= product.quantity %></td>
+  <td><%= product.price %></td>
+  <td><%= product.agent_price %></td>
+  <td><%= product.updated_at %></td>
+  </tr>
+<%end%>
+</table>
+</div>
