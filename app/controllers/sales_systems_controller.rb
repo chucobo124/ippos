@@ -70,9 +70,19 @@ class SalesSystemsController < ApplicationController
       qty = value.count(product.no)
       @cart_list = CartList.new(:no => @sn , :product_no => product.no, :amount => qty , :price => product.price)
       @cart_list.save
-    end  
-
+      print_file((product.name).encode("Big5"))
+    end 
+    print_end 
     redirect_to sales_systems_index_path
+  end
+
+  def print_file(file)
+    print = PrintFile.new
+    print.printFileLeftRaw(file)
+  end
+  def print_end
+    print = PrintFile.new
+    print.printFileCut
   end
 
   private 
