@@ -9,12 +9,9 @@ class PrintFile
 		serialPrint = SerialPort.new(devicePath, boundRay, bitSize,closeBit,mode)
 	end
 	def printFileLeftRaw(file)
-		serialPrint.write(file+"\n")
-	end
-	def printFileRighttRaw(file)
-		serialPrint.write("        "+file+"\n")
+		serialPrint.write(file)
 	end
 	def printFileCut
-		serialPrint.write("\f")
+		serialPrint.close
 	end
 end

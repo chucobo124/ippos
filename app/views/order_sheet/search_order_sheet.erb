@@ -18,15 +18,15 @@
   <%@order_sheet_number.each do |order_sheet|%>
     <tr>
       <td><%=link_to order_sheet.no, order_sheet_show_order_sheet_path(:no => order_sheet.no) %></td>
-      <td><%=@order_sheets.where(:no=>order_sheet.no)[0].created_at%></td>
+      <td><%=@order_sheets_all.where(:no=>order_sheet.no)[0].created_at%></td>
       <%@total = 0%>
       <%@order_sheets.where(:no=>order_sheet.no).each do |total| %>
         <%@total += total.price %>
       <%end%>
       <td><%= @total%></td>
-      <td><%=@order_sheets.where(:no=>order_sheet.no)[0].payment%></td>
-      <td><%=@order_sheets.where(:no=>order_sheet.no)[0].payfee%></td>
-      <td><%=@order_sheets.where(:no=>order_sheet.no).count %></td>
+      <td><%=@order_sheets_all.where(:no=>order_sheet.no)[0].payment%></td>
+      <td><%=@order_sheets_all.where(:no=>order_sheet.no)[0].payfee%></td>
+      <td><%=@order_sheets_all.where(:no=>order_sheet.no).count %></td>
     </tr>
   <%end%>
 </table>

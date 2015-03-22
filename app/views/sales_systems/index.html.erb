@@ -8,7 +8,14 @@
     </div>
     <div class="sheet_ability">
       <label>交易類型</label>
-      <%= button_to "現金" ,:action => "save_cart_as_cash" ,:method =>"post" ,:sn => @sn%>
+      <div>
+        <%= form_tag(sales_systems_save_cart_as_cash_path,method: 'post') do %>
+          <%= label( :payfee ,:金額)%></br>
+          <%= text_field_tag :payfee , "0"%></br>
+          <%= hidden_field_tag :sn , @sn%>
+          <%= submit_tag "現金" %>
+        <%end%>
+      </div>
       <%= button_to "信用卡"%>
     </div> 
   </div>
@@ -37,8 +44,8 @@
               <th><%= @user_cart.count(product.no)%></th>
               <th><%= product.price%></th>
               <th><%= (product.price)*(@user_cart.count(product.no)) %></th>
-              <th><%= link_to 'Delete' , {:controller => "sales_systems", :action => "del_cart", :product_no => product.no } %></th>
               <%@total += (product.price)*(@user_cart.count(product.no))%>
+              <th><%= link_to 'Delete' , {:controller => "sales_systems", :action => "del_cart", :product_no => product.no } %></th>
             </tr>
           <% end %>
         <%end%>

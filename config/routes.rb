@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'order_sheet/index'
 
   get 'products/index'
@@ -13,6 +14,8 @@ Rails.application.routes.draw do
   get 'sales_systems/del_cart'
   get 'order_sheet/index'
   get 'order_sheet/show_order_sheet'
+  post 'order_sheet/search_order_sheet'
+  get 'order_sheet/search_order_sheet'
   get 'homes/index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
