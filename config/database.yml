@@ -50,5 +50,4 @@ test:
 production:
   <<: *default
   database: ipaper_production
-  username: ipaper
   password: <%= ENV['IPAPER_DATABASE_PASSWORD'] %>

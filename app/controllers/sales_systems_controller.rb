@@ -72,6 +72,8 @@ class SalesSystemsController < ApplicationController
     @charge = 0
     value = $redis.hget('CART' , @sn)
     value = value ? Marshal.load(value) : []
+    sleep(0.4)
+    print.printFileLeftRaw("\ez\x01\n"+"編號:".encode("Big5")+@sn.to_s)
     @product_list = Product.where(:no => value) unless value.empty?
     if @product_list.nil?
       redirect_to sales_systems_index_path
@@ -80,7 +82,7 @@ class SalesSystemsController < ApplicationController
         qty = value.count(product.no)
         @cart_list = CartList.new(:no => @sn , :product_no => product.no, :amount => qty , :price => product.price)
         @cart_list.save
-        sleep(0.1)
+        sleep(0.4)
       print.printFileLeftRaw("\ez\x01\n"+((product.name).first(15)).encode("Big5").ljust(10,"\v")+(("$".encode("Big5") + (product.price).to_s).first(5)).rjust(5,"\v"))
         @printtest += "\ez\x01\n"+((product.name).first(15)).encode("Big5").ljust(10,"\v")+(("$".encode("Big5") + (product.price).to_s).first(5)).rjust(5,"\v") 
         @total += product.price
@@ -100,7 +102,6 @@ class SalesSystemsController < ApplicationController
        print.printFileLeftRaw("\ez\x01\n"+"現金".encode("Big5").ljust(10,"\v")+ "\v\v\v\v\v" +"$".encode("Big5") + @total.to_s)
        print.printFileLeftRaw("\ez\x01\n"+"收錢".encode("Big5")+ "\v\v" +"$".encode("Big5") + @payfee.to_s )
        print.printFileLeftRaw("\ez\x01\n"+"找".encode("Big5")+ @charge.to_s)
-       print.printFileLeftRaw("\ez\x01\n"+"編號:".encode("Big5")+@sn.to_s)
        print.printFileLeftRaw("\ez\x01\n"+@created_at.to_s)
        print.printFileLeftRaw("\f")
        print.printFileCut

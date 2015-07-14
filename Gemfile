@@ -27,11 +27,11 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'redis', '~> 3.2.0'
 #this is debug tools
-gem 'better_errors' group: :development
-gem 'binding_of_caller' group: :development
-gem 'pry-rails' group: :development
-gem 'pry-nav'  group: :development
-gem 'meta-tags'   group: :development
+gem 'better_errors' 
+gem 'binding_of_caller' 
+gem 'pry-rails' 
+gem 'pry-nav'  
+gem 'meta-tags' 
 gem 'will_paginate', '~> 3.0.6'
 gem 'devise'
 # Use ActiveModel has_secure_password
